@@ -5,11 +5,24 @@ import Complaint from "./models/Complaint.js";
 import complaintRoutes from "./routes/complaintRoutes.js";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve React build files
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 // ✅ Email Transporter (using Gmail App Password)
 const transporter = nodemailer.createTransport({
@@ -21,6 +34,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
+
 
 // Verify transporter connection on startup
 transporter.verify((error, success) => {
