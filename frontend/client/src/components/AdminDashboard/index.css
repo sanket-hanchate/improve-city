@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+        :root {
+            --primary-color: #2563EB;
+            --secondary-color: #60A5FA;
+            --text-color: #1F2937;
+            --bg-color: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --border-color: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        h2 {
+            color: var(--text-color);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .dashboard-table-wrapper {
+            overflow-x: auto; /* Ensure responsiveness on small screens */
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .dashboard-table thead th {
+            text-align: left;
+            padding: 15px;
+            background-color: #F9FAFB;
+            color: var(--text-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .dashboard-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .dashboard-table tbody tr:hover {
+            background-color: #F9FAFB;
+        }
+        
+        .dashboard-table tbody td {
+            padding: 15px;
+            color: #4B5563;
+            line-height: 1.4;
+        }
+
+        /* Status Styling */
+        .status-cell {
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 9999px; /* Pill shape */
+            text-align: center;
+            display: inline-block;
+            min-width: 80px;
+            font-size: 0.85rem;
+        }
+
+        .status-pending {
+            background-color: #FEF3C7; /* Light Yellow */
+            color: #92400E; /* Dark Brown */
+        }
+
+        .status-in-progress {
+            background-color: #DBEAFE; /* Light Blue */
+            color: #1E40AF; /* Dark Blue */
+        }
+
+        .status-resolved {
+            background-color: #D1FAE5; /* Light Green */
+            color: #065F46; /* Dark Green */
+        }
+
+        /* Action Dropdown Styling */
+        .status-select {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--card-bg);
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            appearance: none; /* Remove default arrow */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%234B5563' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 10px;
+            transition: border-color 0.2s;
+        }
+
+        .status-select:hover {
+            border-color: var(--secondary-color);
+        }
+        
+        .loading, .error-message {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .error-message {
+            color: #EF4444; /* Red */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 20px 15px;
+            }
+            .dashboard-table thead th, .dashboard-table tbody td {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+        }
